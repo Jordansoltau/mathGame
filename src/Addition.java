@@ -5,35 +5,59 @@ public class Addition {
     private int rightOperand;
     private int anser;
     private int level;
+    private int limitOperand;
+
     public Addition() {
+
+        this.level = 1;
+        this.limitOperand = 10;
         createNewAddition();
-    this.level=0;
     }
 
-    public void printAddition(){
+    public int getLeftOperand() {
+        return leftOperand;
+    }
+
+    public int getRightOperand() {
+        return rightOperand;
+    }
+
+    public int getAnser() {
+        return anser;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void printAddition() {
         System.out.println(leftOperand + " + " + rightOperand);
     }
 
-    public void giveAnswer(int answer){
-        if(this.anser!=answer){
+    public void giveAnswer(int answer) {
+        if (this.anser != answer) {
             System.out.println("Bad anwer. Try again");
-        }
-        else {
+        } else {
             System.out.println("Good answer. ");
             createNewAddition();
-
+            level++;
+            if (level%5==0){
+                makeLimitOperandHigherByFive();
+            }
         }
     }
 
 
-    private void createNewAddition(){
+    private void createNewAddition() {
         Random number = new Random();
-        int upperBound =10;
-        this.leftOperand= number.nextInt(upperBound);
-        this.rightOperand= number.nextInt(upperBound);
-        this.anser=leftOperand+rightOperand;
+        int upperBound = limitOperand;
+        this.leftOperand = number.nextInt(upperBound);
+        this.rightOperand = number.nextInt(upperBound);
+        this.anser = leftOperand + rightOperand;
     }
 
-
+    private void makeLimitOperandHigherByFive() {
+        limitOperand += 5;
+    }
 
 }
