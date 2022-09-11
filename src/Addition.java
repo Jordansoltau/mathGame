@@ -38,9 +38,10 @@ public class Addition {
         if (this.anser != answer) {
             System.out.println("Bad anwer. Try again");
         } else {
-            System.out.println("Good answer. ");
+            ++level;
+            System.out.println("Good answer. Your level  "+getLevel());
             createNewAddition();
-            level++;
+
             if (level%5==0){
                 makeLimitOperandHigherByFive();
             }
